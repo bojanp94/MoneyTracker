@@ -1,0 +1,26 @@
+﻿@model IEnumerable<MoneyTracker.Models.Category>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xs-6">
+        @Html.DisplayNameFor(model => model.CategoryName)
+    </div>
+    <div class="col-xs-6">
+        @Html.DisplayNameFor(model => model.CategoryDescription)
+    </div>
+</div>
+
+@foreach(var item in Model)
+{
+    <div class="col-xs-6">
+       @Html.DisplayFor(modelItem => item.CategoryName)
+    </div>
+    <div class="col-xs-6">
+        @Html.DisplayFor(modelItem => item.CategoryDescription)
+        <span style="visibility: hidden">test</span>
+    </div>
+}
+

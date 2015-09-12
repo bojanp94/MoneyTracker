@@ -1,0 +1,18 @@
+﻿@using MoneyTracker.Models
+@model StatsViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@foreach (var item in Model.SpendingsByMonth)
+{
+    <div>@item</div>
+}
+
+@foreach (var item in Model.SpendingsByCategory)
+{
+    <div>@item.Value.CategoryName @item.Value.Sum</div>
+}
+
