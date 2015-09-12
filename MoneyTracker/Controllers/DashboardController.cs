@@ -25,19 +25,22 @@ namespace MoneyTracker.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            ViewBag.Categories = GetCategories();
+
             return View();
         }
         [HttpPost]
         public ActionResult Create(Entry entry)
         {
             if (ModelState.IsValid)
-            
             {
                 entry.UserID = User.Identity.GetUserId();
                 db.Entries.Add(entry);
                 db.SaveChanges();
                 return RedirectToAction("Index", new { id = entry.UserID });
             }
+
+            ViewBag.Categories = GetCategories();
             return View(entry);
         }
 
@@ -46,6 +49,18 @@ namespace MoneyTracker.Controllers
         {
             db.Dispose();
             base.Dispose(disposing);
+        }
+
+        private List<CategoryViewModel> GetCategories()
+        {
+            List<Category> temp = db.Categories.ToList().Where(x => x.UserID == null || x.UserID == User.Identity.GetUserId()).ToList();
+            List<CategoryViewModel> categories = new List<CategoryViewModel>();
+            foreach (var category in temp)
+            {
+                categories.Add(new CategoryViewModel { CategoryID = category.CategoryID, CategoryName = category.CategoryName });
+            }
+
+            return categories;
         }
 	}
 }
