@@ -21,5 +21,6 @@ namespace MoneyTracker.Models
 
         public DbSet<Entry> Entries { get; set; }
         public DbSet<UserData> UsersData { get; set; }
+        public DbSet<Category> Categories { get; set; }
     }
 }
