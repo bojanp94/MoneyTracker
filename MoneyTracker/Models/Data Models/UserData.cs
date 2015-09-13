@@ -26,7 +26,7 @@ namespace MoneyTracker.Models
         [Display(Name = "Gender")]
         public String UserGender { get; set; }
 
-        public int UserID { get; set; }
+
         public virtual User User { get; set; }
 
     }

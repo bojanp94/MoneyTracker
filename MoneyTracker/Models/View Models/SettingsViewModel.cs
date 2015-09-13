@@ -17,6 +17,7 @@ namespace MoneyTracker.Models
 
         [Display(Name = "Birth date")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime UserDateOfBirth { get; set; }
 
         [Display(Name = "Gender")]

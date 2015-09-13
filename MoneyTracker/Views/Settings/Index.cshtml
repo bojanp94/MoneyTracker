@@ -24,23 +24,24 @@
         <div class="form-group">
             @Html.LabelFor(model => model.UserCurrency, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.UserCurrency, new SelectList(ViewBag.CurrencyList))
-              
+                @Html.DropDownListFor(model => model.UserCurrency, new SelectList(ViewBag.CurrencyList , "CurrencyName", "CurrencyName"))
+
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.UserDateOfBirth, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.UserDateOfBirth)
+                 @Html.EditorFor(model => model.UserDateOfBirth)
                 @Html.ValidationMessageFor(model => model.UserDateOfBirth)
+               
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.UserGender, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.UserDateOfBirth, new SelectList(ViewBag.GenderList, "GenderName"))
+                @Html.DropDownListFor(model => model.UserGender, new SelectList(ViewBag.GenderList, "GenderName", "GenderName"))
 
 
               
@@ -49,7 +50,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Save Changes" class="btn btn-default" />
             </div>
         </div>
     </div>
