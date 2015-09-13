@@ -9,7 +9,6 @@ namespace MoneyTracker.Models
     public class Currency
     {
         [Key]
-        public int CurrencyID { get; set; }
         public String CurrencyName { get; set; }
         public String CurrencyCode { get; set; }
     }

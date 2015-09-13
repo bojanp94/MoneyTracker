@@ -11,16 +11,5 @@ namespace MoneyTracker.Models
         public virtual UserData UserData { get; set; }
     }
 
-    public class MoneyTrackerContext : IdentityDbContext<User>
-    {
-        public MoneyTrackerContext()
-            : base("DefaultConnection")
-        {
-
-        }
-
-        public DbSet<Entry> Entries { get; set; }
-        public DbSet<UserData> UsersData { get; set; }
-        public DbSet<Category> Categories { get; set; }
-    }
+    
 }

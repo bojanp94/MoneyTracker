@@ -19,5 +19,6 @@ namespace MoneyTracker.Models
         public DbSet<UserData> UsersData { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Currency> Currencies { get; set; }
+        public DbSet<Gender> Genders { get; set; }
     }
 }
