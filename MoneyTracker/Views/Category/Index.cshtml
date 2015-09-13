@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@Html.ActionLink("Add new category", "Create", "Category")
 <div class="row">
     <div class="col-xs-6">
         @Html.DisplayNameFor(model => model.CategoryName)

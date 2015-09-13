@@ -11,9 +11,20 @@ namespace MoneyTracker.Models
     {
         [Key, ForeignKey("User")]
         public string UserDataId { get; set; }
+
         [MaxLength(64)]
+        [Display(Name = "Name")]
         public String UserLegalName { get; set; }
+
+        [Display(Name = "Currency")]
         public String UserCurrency { get; set; }
+
+        [Display(Name = "Birth date")]
+        [DataType(DataType.Date)]
+        public DateTime UserDateOfBirth { get; set; }
+
+        [Display(Name = "Gender")]
+        public String UserGender { get; set; }
 
         public int UserID { get; set; }
         public virtual User User { get; set; }
