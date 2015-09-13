@@ -41,6 +41,8 @@
             @Html.LabelFor(model => model.UserGender, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.UserDateOfBirth, new SelectList(ViewBag.GenderList, "GenderName"))
+
+
               
             </div>
         </div>
