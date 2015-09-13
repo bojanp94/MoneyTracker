@@ -7,22 +7,80 @@ namespace MoneyTracker.Models
 {
     public class StatsViewModel
     {
+        private const int MonthsInYear = 12;
+        private const int DaysInWeek = 7;
+        private const int DaysInYear = 366;
+        private const int DaysInMonth = 30;
+
         public List<double> SpendingsByMonth { get; private set; }
         public Dictionary<int, CategoryViewModel> SpendingsByCategory { get; private set; }
+        public List<double> SpendingsByDayOfWeek { get; private set; }
+        public List<double> SpendingsByDayOfYear { get; private set; }
+        public List<Entry> MostExpensivePurchases { get; private set; }
         private List<Entry> entries;
+
+        private DateTime firstEntry;
+        private DateTime lastEntry;
+
+        public double DailyAverageSpending 
+        {
+            get
+            {
+                TimeSpan span = lastEntry - firstEntry;
+                return TotalSpending / span.Days;
+            }
+        }
+
+        public double WeeklyAverageSpending
+        {
+            get
+            {
+                TimeSpan span = lastEntry - firstEntry;
+                return TotalSpending / span.Days * DaysInWeek;
+            }
+        }
+
+        public double MonthlyAverageSpending
+        {
+            get
+            {
+                TimeSpan span = lastEntry - firstEntry;
+                return TotalSpending / span.Days * DaysInMonth;
+            }
+        }
+
+        public double TotalSpending
+        {
+            get
+            {
+                double sum = 0;
+                foreach (var item in entries)
+                {
+                    sum += item.EntrySum;
+                }
+                return sum;
+            }
+        }
 
         public StatsViewModel(string userId)
         {
-            SpendingsByMonth = new List<double>(new double[12]);
-            SpendingsByCategory = new Dictionary<int, CategoryViewModel>();
             MoneyTrackerContext ctx = new MoneyTrackerContext();
             entries = ctx.Entries.Where(x => x.UserID == userId).ToList();
+
+            firstEntry = entries.OrderBy(x => x.EntryDate).FirstOrDefault().EntryDate;
+            lastEntry = entries.OrderBy(x => x.EntryDate).LastOrDefault().EntryDate;
+
             SetSpendingsByMonth(DateTime.Now.Year);
             SetSpendingsByCategory();
+            SetSpendingsByDayOfWeek(DateTime.Now.Year);
+            SetSpendingsByDayOfYear(DateTime.Now.Year);
+            SetMostExpensivePurchases(5);
         }
 
         private void SetSpendingsByMonth(int year)
         {
+            SpendingsByMonth = new List<double>(new double[MonthsInYear]);
+
             foreach (var item in entries)
             {
                 if (item.EntryDate.Year == year)
@@ -35,6 +93,8 @@ namespace MoneyTracker.Models
 
         private void SetSpendingsByCategory()
         {
+            SpendingsByCategory = new Dictionary<int, CategoryViewModel>();
+
             foreach (var item in entries)
             {
                 MoneyTrackerContext ctx = new MoneyTrackerContext();
@@ -55,6 +115,39 @@ namespace MoneyTracker.Models
                     SpendingsByCategory[categoryId] = new CategoryViewModel { Sum = item.EntrySum, CategoryID = categoryId, CategoryName = categoryName };
                 }
             }
+        }
+
+        private void SetSpendingsByDayOfWeek(int year)
+        {
+            SpendingsByDayOfWeek = new List<double>(new double[DaysInWeek]);
+
+            foreach (var item in entries)
+            {
+                if (item.EntryDate.Year == year)
+                {
+                    int dayOfWeek = (int)item.EntryDate.DayOfWeek;
+                    SpendingsByDayOfWeek[dayOfWeek] += item.EntrySum;
+                }
+            }
+        }
+
+        private void SetSpendingsByDayOfYear(int year)
+        {
+            SpendingsByDayOfYear = new List<double>(new double[DaysInYear]);
+
+            foreach (var item in entries)
+            {
+                if (item.EntryDate.Year == year)
+                {
+                    int dayOfYear = item.EntryDate.DayOfYear - 1;
+                    SpendingsByDayOfYear[dayOfYear] += item.EntrySum;
+                }
+            }
+        }
+
+        public void SetMostExpensivePurchases(int count)
+        {
+            MostExpensivePurchases = entries.OrderByDescending(x => x.EntrySum).Take(count).ToList();
         }
     }
 }
