@@ -17,7 +17,7 @@ namespace MoneyTracker.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            ViewBag.CurrencyList = db.Categories.ToList();
+            ViewBag.CurrencyList = db.Currencies.ToList();
             ViewBag.GenderList = db.Genders.ToList();
 
             UserData user = db.UsersData.Find(User.Identity.GetUserId());
@@ -42,7 +42,7 @@ namespace MoneyTracker.Controllers
         [HttpPost]
         public ActionResult Index(SettingsViewModel model)
         {
-            ViewBag.CurrencyList = db.Categories.ToList();
+            ViewBag.CurrencyList = db.Currencies.ToList();
             ViewBag.GenderList = db.Genders.ToList();
 
             if (ModelState.IsValid)
