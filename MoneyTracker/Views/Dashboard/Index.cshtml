@@ -48,3 +48,9 @@
         }
     </tbody>
 </table>
+<div class="total-pages" style="display:none;">@ViewBag.TotalPages</div>
+<div class="pagination">
+    <span class="item previous"><a href='@Url.Action("Index", new { @page = ViewBag.CurrentPage-1 })'><</a></span>
+    <span class="item current">@ViewBag.CurrentPage</span>
+    <span class="item next"><a href='@Url.Action("Index", new { @page = ViewBag.CurrentPage+1 })'>></a></span>
+</div>

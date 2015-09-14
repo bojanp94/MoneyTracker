@@ -12,14 +12,16 @@ namespace MoneyTracker.Controllers
     public class DashboardController : Controller
     {
         MoneyTrackerContext db = new MoneyTrackerContext();
-
+        const int PageSize = 10;
 
         // GET: /Dashboard/
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
             var id = User.Identity.GetUserId();
-            var CurretnUser = db.Users.Find(id);
-            return View(CurretnUser.UserEntries);
+            var CurrentUser = db.Users.Find(id);
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = CurrentUser.UserEntries.Count / PageSize + 1;
+            return View(CurrentUser.UserEntries.Skip((page-1) * PageSize).Take(PageSize));
         }
 
         [HttpGet]
