@@ -15,7 +15,7 @@ namespace MoneyTracker.Models
 
         [MaxLength(64)]
         [Required]
-        [Display (Name = "Category")]
+        [Display (Name = "Category Name")]
         public String CategoryName { get; set; }
 
         [Display(Name = "Description")]

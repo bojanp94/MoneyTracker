@@ -4,24 +4,27 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@Html.ActionLink("Add new category", "Create", "Category")
-<div class="row">
-    <div class="col-xs-6">
-        @Html.DisplayNameFor(model => model.CategoryName)
+<div class="grid">
+    <div class="row cells6">
+        <div class="cell colspan2">
+            <h5>@Html.DisplayNameFor(model => model.CategoryName)</h5>
+        </div>
+        <div class="cell colspan4">
+            <h5>@Html.DisplayNameFor(model => model.CategoryDescription)</h5>
+        </div>
     </div>
-    <div class="col-xs-6">
-        @Html.DisplayNameFor(model => model.CategoryDescription)
-    </div>
+    <hr />
+    @foreach (var item in Model)
+    {
+        <div class="row cells6">
+            <div class="cell colspan2">
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </div>
+            <div class="cell colspan4">
+                @Html.DisplayFor(modelItem => item.CategoryDescription)
+            </div>
+        </div>
+    }
 </div>
 
-@foreach(var item in Model)
-{
-    <div class="col-xs-6">
-       @Html.DisplayFor(modelItem => item.CategoryName)
-    </div>
-    <div class="col-xs-6">
-        @Html.DisplayFor(modelItem => item.CategoryDescription)
-        <span style="visibility: hidden">test</span>
-    </div>
-}
-
+@Html.ActionLink("Add New Category", "Create", "Category", new { @class = "button primary" })

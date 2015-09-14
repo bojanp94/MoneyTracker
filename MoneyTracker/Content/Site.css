@@ -40,3 +40,19 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+.page-content {
+    width: 800px;
+    margin:auto;
+    position:relative;
+}
+
+.app-bar-links {
+    width: 800px;
+    margin:auto;
+    position:relative;
+}
+
+.bold {
+    font-weight: bold;
+}

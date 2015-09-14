@@ -4,30 +4,31 @@
     ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="row ">
-    <div class="cell">
-        <h1 class="text-light">
-            Spending Enteries
-        </h1>
-        <hr class="thin bg-grayLighter">
-        <p>
-            @Html.ActionLink("Create New", "Create", null, new { @class = "button primary" })
-        </p>
-        <hr class="thin bg-grayLighter">
+<div class="grid">
+    <div class="row">
+        <div class="cell">
+            <h1 class="text-light">
+                Spending Enteries
+            </h1>
+            <hr class="thin bg-grayLighter">
+            <p>
+                @Html.ActionLink("Create New", "Create", null, new { @class = "button primary" })
+            </p>
+            <hr class="thin bg-grayLighter">
+        </div>
     </div>
-</div>
-   
-<div class="row cells3">
-    <div class="cell">
-        @Html.DisplayNameFor(model => model.EntryName)
+
+    <div class="row cells3">
+        <div class="cell">
+            @Html.DisplayNameFor(model => model.EntryName)
+        </div>
+        <div class="cell">
+            @Html.DisplayNameFor(model => model.EntrySum)
+        </div>
+        <div class="cell">
+            @Html.DisplayNameFor(model => model.EntryDate)
+        </div>
     </div>
-    <div class="cell">
-        @Html.DisplayNameFor(model => model.EntrySum)
-    </div>
-    <div class="cell">
-        @Html.DisplayNameFor(model => model.EntryDate)
-    </div>
-</div>
 
     @foreach (var item in Model)
     {
@@ -41,10 +42,5 @@
             <div class="cell date" data-date="@item.EntryDate">
             </div>
         </div>
-       
-        
     }
-
-
-
-
+</div>

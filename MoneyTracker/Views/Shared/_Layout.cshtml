@@ -3,38 +3,38 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title</title>
     @*@Styles.Render("~/Content/css")*@
     @Styles.Render("~/Content/metrocss")
     @Scripts.Render("~/bundles/modernizr")
-
-</head>
-<body class="bg-white">
-    <div class="app-bar fixed-top navy" data-role="appbar">
-        
-            @Html.ActionLink("Money Tracker", "Index", "Home", null, new { @class = "app-bar-element branding" })
-            <span class="app-bar-divider"></span>
-
-            @Html.Partial("_TopMenuPartial")
-            @Html.Partial("_LoginPartial")
-        
-    </div>
-    <div class="page-content" style="padding-top:50px">
-        <div class="grid">
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-            </footer>
-        </div>
-       
-    </div>
-
     @Scripts.Render("~/bundles/jquery")
     @*@Scripts.Render("~/bundles/bootstrap")*@
     @Scripts.Render("~/bundles/metro")
     @Scripts.Render("~/Scripts/moment.js")
     @Scripts.Render("~/Scripts/dashboard.js")
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    <link rel="stylesheet" href="~/Content/Site.css"/>
+
+</head>
+<body class="bg-white" style="width:100%">
+    <div class="app-bar fixed-top navy" data-role="appbar">
+        <div class="app-bar-links">
+            @Html.ActionLink("Money Tracker", "Index", "Home", null, new { @class = "app-bar-element branding" })
+            <span class="app-bar-divider"></span>
+
+            @Html.Partial("_TopMenuPartial")
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
+    <div class="page-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - FINKI</p>
+        </footer>
+    </div>
+
     @RenderSection("scripts", required: false)
     @if (Request.IsAuthenticated)
     {

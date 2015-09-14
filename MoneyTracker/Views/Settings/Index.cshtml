@@ -8,49 +8,50 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
+    <div class="grid">
         <h4>Settings</h4>
         <hr />
         @Html.ValidationSummary(true)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.UserLegalName, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+        <div class="row cells6">
+            @Html.LabelFor(model => model.UserLegalName, new { @class = "control-label cell" })
+            <div class="cell colspan5">
                 @Html.EditorFor(model => model.UserLegalName)
                 @Html.ValidationMessageFor(model => model.UserLegalName)
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.UserCurrency, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.UserCurrency, new SelectList(ViewBag.CurrencyList , "CurrencyName", "CurrencyName"))
+        <div class="row cells6">
+            @Html.LabelFor(model => model.UserCurrency, new { @class = "control-label cell" })
+            <div class="cell colspan5">
+                @Html.DropDownListFor(model => model.UserCurrency, new SelectList(ViewBag.CurrencyList, "CurrencyName", "CurrencyName"))
 
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.UserDateOfBirth, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                 @Html.EditorFor(model => model.UserDateOfBirth)
+
+        <div class="row cells6">
+            @Html.LabelFor(model => model.UserDateOfBirth, new { @class = "control-label cell" })
+            <div class="cell colspan5">
+                @Html.EditorFor(model => model.UserDateOfBirth)
                 @Html.ValidationMessageFor(model => model.UserDateOfBirth)
-               
+
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.UserGender, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+        <div class="row cells6">
+            @Html.LabelFor(model => model.UserGender, new { @class = "control-label cell" })
+            <div class="cell colspan5">
                 @Html.DropDownListFor(model => model.UserGender, new SelectList(ViewBag.GenderList, "GenderName", "GenderName"))
 
 
-              
+
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save Changes" class="btn btn-default" />
+        <div class="row">
+            <div class="cell">
+                <input type="submit" value="Save Changes" class="button primary" />
             </div>
         </div>
     </div>
