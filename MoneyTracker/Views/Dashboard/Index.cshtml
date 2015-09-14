@@ -17,30 +17,34 @@
             <hr class="thin bg-grayLighter">
         </div>
     </div>
-
-    <div class="row cells3">
-        <div class="cell">
-            @Html.DisplayNameFor(model => model.EntryName)
-        </div>
-        <div class="cell">
-            @Html.DisplayNameFor(model => model.EntrySum)
-        </div>
-        <div class="cell">
-            @Html.DisplayNameFor(model => model.EntryDate)
-        </div>
-    </div>
-
-    @foreach (var item in Model)
-    {
-        <div class="row cells3">
-            <div class="cell">
-                @Html.DisplayFor(modelItem => item.EntryName)
-            </div>
-            <div class="cell">
-                @Html.DisplayFor(modelItem => item.EntrySum)
-            </div>
-            <div class="cell date" data-date="@item.EntryDate">
-            </div>
-        </div>
-    }
 </div>
+<table class="table">
+    <thead class="row cells3">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EntryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EntrySum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EntryDate)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EntryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EntrySum)
+                </td>
+                <td class="cell date" data-date="@item.EntryDate">
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

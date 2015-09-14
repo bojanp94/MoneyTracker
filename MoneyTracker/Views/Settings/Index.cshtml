@@ -13,39 +13,34 @@
         <hr />
         @Html.ValidationSummary(true)
 
-        <div class="row cells6">
+        <div class="row">
             @Html.LabelFor(model => model.UserLegalName, new { @class = "control-label cell" })
-            <div class="cell colspan5">
+            <div class="input-control text">
                 @Html.EditorFor(model => model.UserLegalName)
-                @Html.ValidationMessageFor(model => model.UserLegalName)
             </div>
+            @Html.ValidationMessageFor(model => model.UserLegalName)
         </div>
 
-        <div class="row cells6">
+        <div class="row">
             @Html.LabelFor(model => model.UserCurrency, new { @class = "control-label cell" })
-            <div class="cell colspan5">
+            <div class="input-control select">
                 @Html.DropDownListFor(model => model.UserCurrency, new SelectList(ViewBag.CurrencyList, "CurrencyName", "CurrencyName"))
-
             </div>
         </div>
 
 
-        <div class="row cells6">
+        <div class="row">
             @Html.LabelFor(model => model.UserDateOfBirth, new { @class = "control-label cell" })
-            <div class="cell colspan5">
+            <div class="input-control text">
                 @Html.EditorFor(model => model.UserDateOfBirth)
-                @Html.ValidationMessageFor(model => model.UserDateOfBirth)
-
             </div>
+            @Html.ValidationMessageFor(model => model.UserDateOfBirth)
         </div>
 
-        <div class="row cells6">
+        <div class="row">
             @Html.LabelFor(model => model.UserGender, new { @class = "control-label cell" })
-            <div class="cell colspan5">
+            <div class="input-control select">
                 @Html.DropDownListFor(model => model.UserGender, new SelectList(ViewBag.GenderList, "GenderName", "GenderName"))
-
-
-
             </div>
         </div>
 

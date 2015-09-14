@@ -10,40 +10,41 @@
 <div class="grid">
     <div class="row cells2">
         <div class="cell">
-            <div class="grid">
-                <div class="row cells2">
-                    <div class="cell">Daily Average Spending</div>
-                    <div class="cell">@string.Format("{0:0.00}", Model.DailyAverageSpending)</div>
-                </div>
+            <table class="table">
+                <thead><tr><th>Averages</th></tr></thead>
+                <tr>
+                    <td>Daily Average Spending</td>
+                    <td>@string.Format("{0:0.00}", Model.DailyAverageSpending)</td>
+                </tr>
 
-                <div class="row cells2">
-                    <div class="cell">Weekly Average Spending</div>
-                    <div class="cell">@string.Format("{0:0.00}", Model.WeeklyAverageSpending)</div>
-                </div>
+                <tr>
+                    <td>Weekly Average Spending</td>
+                    <td>@string.Format("{0:0.00}", Model.WeeklyAverageSpending)</td>
+                </tr>
 
-                <div class="row cells2">
-                    <div class="cell">Monthly Average Spending</div>
-                    <div class="cell">@string.Format("{0:0.00}", Model.MonthlyAverageSpending)</div>
-                </div>
+                <tr>
+                    <td>Monthly Average Spending</td>
+                    <td>@string.Format("{0:0.00}", Model.MonthlyAverageSpending)</td>
+                </tr>
 
-                <div class="row cells2">
-                    <div class="cell">Total Spending</div>
-                    <div class="cell">@string.Format("{0:0.00}", Model.TotalSpending)</div>
-                </div>
-            </div>
+                <tr>
+                    <td>Total Spending</td>
+                    <td>@string.Format("{0:0.00}", Model.TotalSpending)</td>
+                </tr>
+            </table>
         </div>
 
         <div class="cell">
-            <div>Most Expensive Purchases</div>
-            <div class="grid">
+            <table class="table">
+                <thead><tr><th>Most Expensive Purchases</th></tr></thead>
                 @foreach (var item in Model.MostExpensivePurchases)
                 {
-                    <div class="row cells2">
-                        <div class="cell">@item.EntryName</div>
-                        <div class="cell">@item.EntrySum</div>
-                    </div>
+                    <tr>
+                        <td>@item.EntryName</td>
+                        <td>@item.EntrySum</td>
+                    </tr>
                 }
-            </div>
+            </table>
         </div>
     </div> 
 </div>

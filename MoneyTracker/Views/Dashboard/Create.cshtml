@@ -17,41 +17,41 @@
         <hr />
         @Html.ValidationSummary(true)
 
-        <div class="row cells6">
+        <div class="row">
             @Html.LabelFor(model => model.EntryDate, new { @class = "control-label cell" })
-            <div class="cell colspan5">
+            <div class="input-control text">
                 @Html.EditorFor(model => model.EntryDate)
-                @Html.ValidationMessageFor(model => model.EntryDate)
             </div>
+            @Html.ValidationMessageFor(model => model.EntryDate)
         </div>
 
-        <div class="row cells6">
+        <div class="row">
             @Html.LabelFor(model => model.EntryName, new { @class = "control-label cell" })
-            <div class="cell colspan5">
+            <div class="input-control text">
                 @Html.EditorFor(model => model.EntryName)
-                @Html.ValidationMessageFor(model => model.EntryName)
             </div>
+            @Html.ValidationMessageFor(model => model.EntryName)
         </div>
 
-        <div class="row cells6">
+        <div class="row">
             @Html.LabelFor(model => model.EntryDescription, new { @class = "control-label cell" })
-            <div class="cell colspan5">
+            <div class="input-control text">
                 @Html.EditorFor(model => model.EntryDescription)
-                @Html.ValidationMessageFor(model => model.EntryDescription)
             </div>
+            @Html.ValidationMessageFor(model => model.EntryDescription)
         </div>
 
-        <div class="row cells6">
+        <div class="row">
             @Html.LabelFor(model => model.EntrySum, new { @class = "control-label cell" })
-            <div class="cell colspan5">
+            <div class="input-control text">
                 @Html.EditorFor(model => model.EntrySum)
-                @Html.ValidationMessageFor(model => model.EntrySum)
             </div>
+            @Html.ValidationMessageFor(model => model.EntrySum)
         </div>
 
-        <div class="row cells6">
+        <div class="row">
             @Html.LabelFor(model => model.CategoryID, new { @class = "control-label cell" })
-            <div class="cell colspan5">
+            <div class="input-control select">
                 @Html.DropDownListFor(model => model.CategoryID, new SelectList(ViewBag.Categories, "CategoryID", "CategoryName"))
             </div>
         </div>
