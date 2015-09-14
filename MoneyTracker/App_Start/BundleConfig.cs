@@ -26,6 +26,18 @@ namespace MoneyTracker
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/metro").Include(
+                    "~/Scripts/metro.js"
+                ));
+
+            bundles.Add(new StyleBundle("~/Content/metrocss").Include(
+                "~/Content/metro-icons.css",
+                "~/Content/metro-responsive.css",
+                "~/Content/metro-rtl.css",
+                "~/Content/metro-schemes.css",
+                "~/Content/metro.css"
+                ));
         }
     }
 }

@@ -4,6 +4,7 @@ namespace MoneyTracker.Migrations
     using Microsoft.AspNet.Identity.EntityFramework;
     using MoneyTracker.Models;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Globalization;
@@ -29,15 +30,10 @@ namespace MoneyTracker.Migrations
             ctx.Genders.AddOrUpdate(x => x.GenderName, new Gender { GenderName = "Female" });
             ctx.Genders.AddOrUpdate(x => x.GenderName, new Gender { GenderName = "Unknown" });
 
-            //add Currencies
-              foreach (CultureInfo cultureInfo in CultureInfo.GetCultures(CultureTypes.SpecificCultures))
-              {
-                  RegionInfo regionInfo = new RegionInfo(cultureInfo.LCID);
-                  if (ctx.Currencies.Find(regionInfo.CurrencyEnglishName) == null)
-                  {
-                      ctx.Currencies.AddOrUpdate(x => x.CurrencyName, new Currency { CurrencyName = regionInfo.CurrencyEnglishName, CurrencyCode = regionInfo.ISOCurrencySymbol });
-                  }          
-              }
+            if(ctx.Currencies.ToList().Count == 0)
+            {
+                ctx.Currencies.AddRange(Configuration.GetCurrencies());
+            }
            
 
             //save changes
@@ -53,6 +49,20 @@ namespace MoneyTracker.Migrations
 
                 manager.Create(user, "123456");
             }
+        }
+
+        static private List<Currency> GetCurrencies ()
+        {
+            var res = new List<Currency>();
+            foreach (CultureInfo cultureInfo in CultureInfo.GetCultures(CultureTypes.SpecificCultures))
+            {
+                RegionInfo regionInfo = new RegionInfo(cultureInfo.LCID);
+                if(!res.Exists(x => x.CurrencyName == regionInfo.CurrencyEnglishName))
+                {
+                    res.Add(new Currency { CurrencyName = regionInfo.CurrencyEnglishName, CurrencyCode = regionInfo.ISOCurrencySymbol });
+                }
+            }
+            return res;
         }
     }
 }
