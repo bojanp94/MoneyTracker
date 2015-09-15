@@ -67,7 +67,7 @@ function MakeChart(names, values, divId) {
         labels: names,
         datasets: [{
             label: "My First dataset",
-            fillColor: "#00ddff",
+            fillColor: "#60a917",
             strokeColor: "rgba(50,50,50,0.8)",
             highlightFill: "rgba(50,50,50,0.75)",
             highlightStroke: "rgba(50,50,50,1)",

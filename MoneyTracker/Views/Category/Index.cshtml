@@ -3,7 +3,8 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<h4>Stats</h4>
+<hr class="bg-emerald" />
 <table class="table">
     <thead>
         <tr>
@@ -31,4 +32,6 @@
     </tbody>
 </table>
 
-@Html.ActionLink("Add New Category", "Create", "Category", new { @class = "button primary" })
+@Html.ActionLink("Add New Category", "Create", "Category", new { @class = "button bg-emerald fg-white bg-active-emerald "})
+
+<hr class="bg-emerald" />

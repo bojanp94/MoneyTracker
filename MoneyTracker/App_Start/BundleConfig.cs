@@ -36,7 +36,8 @@ namespace MoneyTracker
                 "~/Content/metro-responsive.css",
                 "~/Content/metro-rtl.css",
                 "~/Content/metro-schemes.css",
-                "~/Content/metro.css"
+                "~/Content/metro.css",
+                "~/Content/zocial.css"
                 ));
         }
     }

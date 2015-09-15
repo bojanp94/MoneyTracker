@@ -210,6 +210,7 @@
     <Compile Include="Models\Catalog Models\Gender.cs" />
     <Compile Include="Models\Data Models\IdentityModels.cs" />
     <Compile Include="Models\Context\MoneyTrackerContext.cs" />
+    <Compile Include="Models\View Models\ExternalLoginViewModel.cs" />
     <Compile Include="Models\View Models\SettingsViewModel.cs" />
     <Compile Include="Models\View Models\StatsViewModel.cs" />
     <Compile Include="Models\Data Models\UserData.cs" />
@@ -231,6 +232,7 @@
     <Content Include="Content\metro-schemes.min.css" />
     <Content Include="Content\metro.css" />
     <Content Include="Content\metro.min.css" />
+    <Content Include="Content\zocial.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\metro.svg" />
@@ -253,6 +255,8 @@
     <Content Include="Images\11973046_10207429842893294_518670708_n.gif" />
     <Content Include="Images\12021825_10207439730820486_394060368_n.jpg" />
     <Content Include="Images\12029111_10207439861303748_12218742_n.jpg" />
+    <Content Include="Images\money-750x297.png" />
+    <Content Include="Images\settings.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\Chart.js" />
