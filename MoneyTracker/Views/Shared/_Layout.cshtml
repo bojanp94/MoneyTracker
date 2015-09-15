@@ -16,6 +16,7 @@
 
     <link rel="stylesheet" href="~/Content/Site.css"/>
 
+
 </head>
 <body class="bg-white" style="width:100%">
     <div class="app-bar fixed-top navy" data-role="appbar">
@@ -29,9 +30,14 @@
     </div>
     <div class="page-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - FINKI</p>
+        
+        <footer >
+            <p>&copy; @DateTime.Now.Year - FINKI
+            <br />
+                <a href="~/Home/Index" class="tag info">Home</a>
+                <a href="~/Home/About" class="tag alert">About Us</a>
+                <a href="~/Home/Contact" class="tag success">Contact</a>
+            </p>
         </footer>
     </div>
 

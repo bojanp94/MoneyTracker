@@ -16,7 +16,10 @@ namespace MoneyTracker.Controllers
         public ActionResult Index()
         {
             StatsViewModel model = new StatsViewModel(User.Identity.GetUserId());
-            return View(model);
+            if (model.entries.Count > 0)
+                return View(model);
+            else
+                return View("NoEntries");
         }
 
 	}

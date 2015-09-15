@@ -17,7 +17,7 @@ namespace MoneyTracker.Models
         public List<double> SpendingsByDayOfWeek { get; private set; }
         public List<double> SpendingsByDayOfYear { get; private set; }
         public List<Entry> MostExpensivePurchases { get; private set; }
-        private List<Entry> entries;
+        public List<Entry> entries { get; private set; }
 
         private DateTime firstEntry;
         private DateTime lastEntry;
@@ -66,15 +66,18 @@ namespace MoneyTracker.Models
         {
             MoneyTrackerContext ctx = new MoneyTrackerContext();
             entries = ctx.Entries.Where(x => x.UserID == userId).ToList();
+            if(entries.Count > 0)
+            {
+                firstEntry = entries.OrderBy(x => x.EntryDate).FirstOrDefault().EntryDate;
+                lastEntry = entries.OrderBy(x => x.EntryDate).LastOrDefault().EntryDate;
 
-            firstEntry = entries.OrderBy(x => x.EntryDate).FirstOrDefault().EntryDate;
-            lastEntry = entries.OrderBy(x => x.EntryDate).LastOrDefault().EntryDate;
-
-            SetSpendingsByMonth(DateTime.Now.Year);
-            SetSpendingsByCategory();
-            SetSpendingsByDayOfWeek(DateTime.Now.Year);
-            SetSpendingsByDayOfYear(DateTime.Now.Year);
-            SetMostExpensivePurchases(5);
+                SetSpendingsByMonth(DateTime.Now.Year);
+                SetSpendingsByCategory();
+                SetSpendingsByDayOfWeek(DateTime.Now.Year);
+                SetSpendingsByDayOfYear(DateTime.Now.Year);
+                SetMostExpensivePurchases(5);
+            }
+   
         }
 
         private void SetSpendingsByMonth(int year)

@@ -1,17 +1,46 @@
 ﻿@{
     ViewBag.Title = "Contact";
+    ViewBag.Message = "If you have any inquiries about this app fell free to contact us";
 }
 <h2>@ViewBag.Title.</h2>
+<hr class="bg-green">
 <h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<div class="grid">
+    <div class="row cells2">
+        <div class=" cell">
+            <p class="text-accent">
+                <h4>Address: </h4>
+                Faculty of Computer Science and Engineering<br />
+                "Rugjer Boshkovikj" 16<br />
+                P.O. Box 393<br />
+                1000 Skopje, Republic of Macedonia<br />
+                <h4>Email:</h4>
+                <a href="mailto:info@moneytracker.mk">info@moneytracker.mk</a><br />
+                <h4>Phone:</h4>
+                +389 (0)70 999-999<br />
+                +389 (0)2 9999-999<br /><br />
+            </p>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+        </div>
+        <div class="cell image-container">
+            <img src="~/Images/12029111_10207439861303748_12218742_n.jpg" style="height: 240px; width:auto; float:right;"/>
+        </div>
+       
+    </div>
+    <div class="row">
+        <b>Team: </b><br />
+        <ul class="simple-list large-bullet green-bullet">
+            <li>Bojan Petrovski</li>
+            <li>Atanas Todorovski</li>
+            <li>Ivona Najdenkoska</li>
+            <li>Tome Stojkovski</li>
+            <li>Marija Janeva</li>
+        </ul>
+    </div>
+        
+     
+       
+    
+</div>
+<hr class="bg-green">
