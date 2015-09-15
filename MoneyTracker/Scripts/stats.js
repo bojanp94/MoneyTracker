@@ -3,6 +3,7 @@
     SpendingsByCategoryChart();
     SpendingsByDayOfWeekChart();
     SpendingsByDayOfYearChart();
+    InitStatsDropdown();
 });
 
 function SpendingsByMonthChart() {
@@ -78,4 +79,16 @@ function MakeChart(names, values, divId) {
 
     var ctx = $(divId).get(0).getContext("2d");
     var chart = new Chart(ctx).Bar(data);
+}
+
+function InitStatsDropdown() {
+    $('#stats-dd').on('change', function () {
+        var picked = parseInt($(this).val())-1;
+        $('.stats-grid > .row').each(function () {
+            $(this).hide();
+        });
+                    
+        $('.stats-grid').find('.row:eq(' + picked + ')').show();
+    })
+    $('#stats-dd').change();
 }
