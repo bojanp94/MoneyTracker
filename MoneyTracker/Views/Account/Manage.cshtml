@@ -4,8 +4,8 @@
     ViewBag.Title = "Manage Account";
 }
 
-<h2>@ViewBag.Title.</h2>
-
+<h4>@ViewBag.Title.</h4>
+<hr class="bg-green">   
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div class="row">
     <div class="col-md-12">
@@ -20,10 +20,12 @@
 
         <section id="externalLogins">
             @Html.Action("RemoveAccountList")
-            @Html.Partial("_ExternalLoginsListPartial", new { Action = "LinkLogin", ReturnUrl = ViewBag.ReturnUrl })
+            @Html.Partial("_ExternalLoginsListPartial", new MoneyTracker.Models.View_Models.ExternalLoginViewModel{ Action = "LinkLogin", ReturnUrl = ViewBag.ReturnUrl })
         </section>
     </div>
 </div>
+
+<hr class="bg-green">
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
