@@ -46,6 +46,21 @@ namespace MoneyTracker.Controllers
             return View(entry);
         }
 
+        [HttpGet]
+        public ActionResult Delete(int entryId)
+        {
+            db.Entries.Remove(db.Entries.Where(x => x.EntryID == entryId).FirstOrDefault());
+            db.SaveChanges();
+
+            var id = User.Identity.GetUserId();
+            var CurrentUser = db.Users.Find(id);
+
+            ViewBag.CurrentPage = 1;
+            ViewBag.TotalPages = CurrentUser.UserEntries.Count / PageSize + 1;
+
+            return View("Index", CurrentUser.UserEntries.Take(PageSize));
+        }
+
 
         protected override void Dispose(bool disposing)
         {

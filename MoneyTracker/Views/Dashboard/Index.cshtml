@@ -44,6 +44,9 @@
                 </td>
                 <td class="cell date" data-date="@item.EntryDate">
                 </td>
+                <td>
+                    <a href='@Url.Action("Delete", new { @entryId = item.EntryID })'>Delete</a>
+                </td>
             </tr>
         }
     </tbody>
