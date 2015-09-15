@@ -10,7 +10,7 @@ namespace MoneyTracker.Models
         private const int MonthsInYear = 12;
         private const int DaysInWeek = 7;
         private const int DaysInYear = 366;
-        private const int DaysInMonth = 30;
+        private const int DaysInMonth = 31;
 
         public List<double> SpendingsByMonth { get; private set; }
         public Dictionary<int, CategoryViewModel> SpendingsByCategory { get; private set; }
@@ -27,7 +27,7 @@ namespace MoneyTracker.Models
             get
             {
                 TimeSpan span = lastEntry - firstEntry;
-                return TotalSpending / span.Days;
+                return TotalSpending / (span.Days + 1);
             }
         }
 
@@ -36,7 +36,7 @@ namespace MoneyTracker.Models
             get
             {
                 TimeSpan span = lastEntry - firstEntry;
-                return TotalSpending / span.Days * DaysInWeek;
+                return TotalSpending / (span.Days + 1) * DaysInWeek;
             }
         }
 
@@ -45,7 +45,7 @@ namespace MoneyTracker.Models
             get
             {
                 TimeSpan span = lastEntry - firstEntry;
-                return TotalSpending / span.Days * DaysInMonth;
+                return TotalSpending / (span.Days + 1) * DaysInMonth;
             }
         }
 
@@ -136,14 +136,14 @@ namespace MoneyTracker.Models
 
         private void SetSpendingsByDayOfYear(int year)
         {
-            SpendingsByDayOfYear = new List<double>(new double[DaysInYear]);
+            SpendingsByDayOfYear = new List<double>(new double[DaysInMonth]);
 
             foreach (var item in entries)
             {
                 if (item.EntryDate.Year == year)
                 {
-                    int dayOfYear = item.EntryDate.DayOfYear - 1;
-                    SpendingsByDayOfYear[dayOfYear] += item.EntrySum;
+                    int dayOfYear = item.EntryDate.Day - 1;
+                    SpendingsByDayOfYear[dayOfYear] += item.EntrySum; 
                 }
             }
         }

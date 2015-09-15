@@ -48,8 +48,8 @@ function SpendingsByDayOfWeekChart() {
 }
 
 function SpendingsByDayOfYearChart() {
-    var days = [];
-    for (var i = 0; i < 366; i++) {
+    var days = []; 
+    for (var i = 0; i < 31; i++) {
         days.push(i + 1);
     }
     var daysVals = [];
@@ -67,7 +67,7 @@ function MakeChart(names, values, divId) {
         labels: names,
         datasets: [{
             label: "My First dataset",
-            fillColor: "#60a917",
+            fillColor: "#00ddff",
             strokeColor: "rgba(50,50,50,0.8)",
             highlightFill: "rgba(50,50,50,0.75)",
             highlightStroke: "rgba(50,50,50,1)",

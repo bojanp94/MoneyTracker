@@ -8,8 +8,6 @@
 <style>.hidden{display:none;}</style>
 
 <div class="grid">
-    <h4>Stats</h4>
-    <hr class="bg-green"/>
     <div class="row cells2">
         <div class="cell">
             <table class="table">
@@ -72,14 +70,19 @@
     <div class="day-of-year-val hidden">@item</div>
 }
 
-<h4>Graphs</h4>
-<hr class="bg-green" />
+Show stats for:
+<select id="stats-dd">
+    <option value="1">Spendings by Month</option>
+    <option value="2">Spendings by Category</option>
+    <option value="3">Spendings by Day of Week</option>
+    <option value="4">Spendings by Day of Year</option>
+</select>
 
 <div class="grid stats-grid">
     <div class="row">
         <div class="cell">
             <h4>Spendings by Month</h4>
-            <canvas id="spendingsByMonthChart" height="300" width="800" col></canvas>
+            <canvas id="spendingsByMonthChart" height="300" width="800"></canvas>
         </div>
     </div>
     <div class="row">
@@ -94,7 +97,12 @@
             <canvas id="spendingsByDayOfWeekChart" height="300" width="800"></canvas>
         </div>
     </div>
+    <div class="row">
+        <div class="cell">
+            <h4>Spendings by Day of Month</h4>
+            <canvas id="spendingsByDayOfYearChart" height="300" width="800"></canvas>
+        </div>
+    </div>
 </div>
-<hr class="bg-green" />
 <script src="~/Scripts/Chart.js"></script>
-<script src="~/Scripts/stats.js"></script>
+<script src="~/Scripts/stats.js"></script> 
