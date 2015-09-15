@@ -18,6 +18,12 @@ namespace MoneyTracker
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            //routes.MapRoute(
+            //    name: "Dashboard",
+            //    url: "Dashboard/Index/{page}",
+            //    defaults: new { controller = "Dashboard", action = "Index", page = UrlParameter.Optional }
+            //    );
         }
     }
 }
